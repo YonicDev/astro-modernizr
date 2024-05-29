@@ -1,0 +1,50 @@
+{
+	"name": "astro-modernizr",
+	"version": "0.0.0",
+	"description": "Add Modernizr feature detection to your Astro site.",
+	"author": {
+		"email": "mariomartinezpalacio@gmail.com",
+		"name": "Mario Martínez Palacio",
+		"url": "https://mariomapa.dev"
+	},
+	"license": "MIT",
+	"keywords": [
+		"astro-integration",
+		"astro-component",
+		"withastro",
+		"astro",
+		"modernizr"
+	],
+	"homepage": "TODO:",
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "tsup --watch",
+		"prebuild": "node prebuild.js",
+		"build": "tsup"
+	},
+	"type": "module",
+	"peerDependencies": {
+		"astro": "^4.9.1"
+	},
+	"dependencies": {
+		"astro-integration-kit": "^0.13.3",
+		"modernizr": "^3.13.0",
+		"@types/modernizr": "^3.5.6",
+		"ts-transformer-keys": "^0.4.4"
+	},
+	"devDependencies": {
+		"tsup": "^8.0.2"
+	}
+}

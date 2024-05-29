@@ -1,0 +1,9 @@
+{
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"declaration": true,
+		"declarationDir": "./types",
+		"jsx": "preserve",
+	},
+	"exclude": ["dist"]
+}
