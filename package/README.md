@@ -12,9 +12,7 @@
 
 This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that adds Modernizr to your Astro site, a fast tool that detects which HTML, CSS and JS features do browsers support, allowing you to progressively enhance and future-proof your components and site with fine control and guaranteed accuracy.
 
-## Usage
-
-### Installation
+## Installation
 
 Install the integration **automatically** using the Astro CLI:
 
@@ -63,41 +61,41 @@ export default defineConfig({
 });
 ```
 
-### Configuration
+## Configuration
 
 The integration follows the same configuration as building Modernizr from the JS module to provide the smallest bundle as needed.
 
-#### options
+### options
 
 An array of the name of the different [Modernizr API](https://modernizr.com/docs/#modernizr-api) functions to include. By default, it doesn't include anything.
 
 For a more sensible default, `["setClasses"]` is good for adding CSS classes in accord to the support or not of certain features, instead of adding classes *only* if it does support them.
 
-#### featureDetects
+### featureDetects
 
 An array of all the features that you wish to test for. The complete supported list can be found [here](https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json).
 
 By default, it doesn't test for anything.
 
-#### classPrefix
+### classPrefix
 
 A string that you wish to use to prefix your classes. For example, `"supported-"`.
 
 By default, there is no prefix.
 
-#### enableCSSClasses
+### enableCSSClasses
 
 A boolean to enable adding CSS classes to the root of the document (the `<html>` node). If false, regardless of adding `setClasses` to the options array, Modernizr will not add any classes (except for `.no-js`).
 
 Enabled by default.
 
-#### enableJSClass
+### enableJSClass
 
 A boolean to enable updating the `.no-js` class that Modernizr adds automatically to the root of the document to `.js` if JavaScript is enabled *and working*. The class won't be able to update if the browser halts scripts on error.
 
 Enabled by default.
 
-#### minify
+### minify
 
 A boolean that determines whether to minify the generated client JavaScript that'll be placed on the Astro page.
 
@@ -105,17 +103,33 @@ Enabled by default.
 
 > This differs from the default in the npm module, as the generated code will *not* be optimized by Vite. This is done by design for backwards compatibility with browsers that do not support ES6 modules.
 
-#### scriptGlobalName
+### scriptGlobalName
 
 The name of the global object to be used by Modernizr.
 
-By default, it is set to `"window"`, and it shouldn't there be any need to change it.
+By default, it is set to `"window"`, and there shouldn't be any need to change it.
 
-#### usePrefixes
+### usePrefixes
 
 A boolean that determines whether to check for vendor prefixes when testing a feature.
 
 Enabled by default.
+
+## Usage
+
+You can use Modernizr just like you would normally. [Check the documentation][1] for more details.
+
+The integration exposes the `Modernizr` object globally on client scripts and offers typings to be used in optimized scripts. However, for backwards compatibility purposes it's heavily recommended to **use Modernizr only in inline scripts**.
+
+```html
+<script is:inline>
+  if (Modernizr.awesomeNewFeature) {
+    // Use the new awesome feature!
+  } else {
+    // Get the old lame experience.
+  }
+</script>
+```
 
 ## Contributing
 
