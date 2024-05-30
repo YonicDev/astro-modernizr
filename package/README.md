@@ -103,7 +103,7 @@ A boolean that determines whether to minify the generated client JavaScript that
 
 Enabled by default.
 
-> This differs from the default from the npm module, as the generated code will *not* be optimized by Vite. This is done by design for backwards compatibility with browsers that do not support ES6 modules.
+> This differs from the default in the npm module, as the generated code will *not* be optimized by Vite. This is done by design for backwards compatibility with browsers that do not support ES6 modules.
 
 #### scriptGlobalName
 
@@ -113,7 +113,9 @@ By default, it is set to `"window"`, and it shouldn't there be any need to chang
 
 #### usePrefixes
 
-A boolean that determines whether to use prefixes for 
+A boolean that determines whether to check for vendor prefixes when testing a feature.
+
+Enabled by default.
 
 ## Contributing
 
