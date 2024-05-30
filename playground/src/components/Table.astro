@@ -1,0 +1,30 @@
+---
+type Props = { elements: Array<{ title: string; className: string }> };
+
+function splitIntoChunks<T>(a: Array<T>, size: number) {
+	return Array.from(new Array(Math.ceil(a.length / size)), (_, i) =>
+		a.slice(i * size, i * size + size),
+	);
+}
+
+const { elements } = Astro.props;
+
+const rows = splitIntoChunks(elements, 3);
+---
+<center class="legacy-table">
+<table width="800">
+    <tbody>
+        {
+            rows.map(row => <tr>
+				{row.map(({title, className}) => <td class={`test-${className}`}>
+					<h2>{title}</h2>
+					<p>
+						<span class="supported">Supported! <span class="emoji-smiley">👍</span><span class="smiley">:)</span></span>
+						<span class="not-supported">Not supported <span class="emoji-smiley">😭</span><span class="smiley">:'(</span></span>
+					</p>
+				</td>)}
+			</tr>)
+        }
+    </tbody>
+</table>
+</center>

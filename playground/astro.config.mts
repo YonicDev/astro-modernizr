@@ -1,4 +1,3 @@
-import tailwind from "@astrojs/tailwind";
 import { createResolver } from "astro-integration-kit";
 import { hmrIntegration } from "astro-integration-kit/dev";
 import { defineConfig } from "astro/config";
@@ -9,7 +8,6 @@ import modernizr from "astro-modernizr";
 export default defineConfig({
 	scopedStyleStrategy: "class",
 	integrations: [
-		tailwind(),
 		modernizr({
 			featureDetects: [
 				"ambientlight",
@@ -17,8 +15,10 @@ export default defineConfig({
 				"css/opacity",
 				"css/cssgrid",
 				"elem/ruby",
-				"img/avif",
 				"img/webp",
+				"es6/promises",
+				"es5/strictmode",
+				"emoji",
 			],
 			options: ["setClasses"],
 		}),

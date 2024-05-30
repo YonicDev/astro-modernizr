@@ -3,6 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
+	"browserslist": ["IE >= 5.5, Firefox >= 1, supports flexbox"],
 	"scripts": {
 		"dev": "astro dev --host",
 		"start": "astro dev --host",
@@ -11,15 +12,21 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/tailwind": "^5.1.0",
 		"astro": "^4.9.1",
 		"astro-integration-kit": "^0.13.3",
-		"astro-modernizr": "workspace:*",
-		"tailwindcss": "^3.4.3"
+		"astro-modernizr": "workspace:*"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.7.0",
+		"@csstools/postcss-oklab-function": "^3.0.16",
 		"@types/node": "^20.12.12",
+		"autoprefixer": "^10.4.19",
+		"level4": "^1.0.1",
+		"postcss-color-rgb": "^2.0.0",
+		"postcss-color-rgba-fallback": "^4.0.0",
+		"postcss-filter-gradient": "^1.0.0",
+		"postcss-pixrem": "^6.0.0",
+		"postcss-pseudo-is": "^0.3.0",
 		"typescript": "^5.4.5"
 	}
 }

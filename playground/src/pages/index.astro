@@ -1,10 +1,11 @@
 ---
 import Card from "../components/Card.astro";
+import Table from "../components/Table.astro";
 import Layout from "../layouts/Layout.astro";
 
 import type { FeatureDetects } from "astro-modernizr";
 
-const tests: { title: string; className: keyof FeatureDetects | "avif" }[] = [
+const tests: { title: string; className: keyof FeatureDetects }[] = [
 	{
 		title: "Ambient light",
 		className: "ambientlight",
@@ -26,12 +27,20 @@ const tests: { title: string; className: keyof FeatureDetects | "avif" }[] = [
 		className: "ruby",
 	},
 	{
-		title: "AVIF images",
-		className: "avif",
+		title: "Emoji",
+		className: "emoji",
 	},
 	{
-		title: "WEBP images",
+		title: "Images: WEBP",
 		className: "webp",
+	},
+	{
+		title: "ES6 Promises",
+		className: "promises",
+	},
+	{
+		title: "ES5 strict mode",
+		className: "strictmode",
 	},
 ];
 
@@ -81,81 +90,15 @@ html.no-${className} .test-${className} .supported {
 		</svg>
 		<h1><span class="text-gradient">Astro</span> + <span class="text-pink-gradient">Modernizr</span></h1>
 		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+			<strong>Progressive enhancement supercharged.</strong> This page will test several features introduced at different times in web development history.
 		</p>
 		<ul role="list" class="link-card-grid">
 			{
-				tests.map((test) => <Card title={test.title} testClass={`test-${test.className}`} />)
+				tests.sort((a, b) => a.title.localeCompare(b.title)).map((test) => <Card title={test.title} testClass={`test-${test.className}`} />)
 			}
 		</ul>
+		<Table elements={tests.sort((a, b) => a.title.localeCompare(b.title))} />
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.text-pink-gradient {
-		background-image: var(--pink-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
 
 <style is:global set:text={internalCss}></style>
