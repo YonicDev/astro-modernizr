@@ -3,7 +3,9 @@
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"browserslist": ["IE >= 5.5, Firefox >= 1, supports flexbox"],
+	"browserslist": [
+		"IE >= 5.5, Firefox >= 1, supports flexbox"
+	],
 	"scripts": {
 		"dev": "astro dev --host",
 		"start": "astro dev --host",
