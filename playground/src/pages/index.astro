@@ -4,44 +4,49 @@ import Layout from "../layouts/Layout.astro";
 
 import type { FeatureDetects } from "astro-modernizr";
 
-const tests: {title: string, className: keyof FeatureDetects | "avif" }[] = [
+const tests: { title: string; className: keyof FeatureDetects | "avif" }[] = [
 	{
 		title: "Ambient light",
-		className:"ambientlight",
+		className: "ambientlight",
 	},
 	{
 		title: "HTML5 Audio",
-		className: "audio"
+		className: "audio",
 	},
 	{
 		title: "CSS Opacity",
-		className: "opacity"
+		className: "opacity",
 	},
 	{
 		title: "CSS Grids",
-		className: "cssgrid"
+		className: "cssgrid",
 	},
 	{
 		title: "Ruby text",
-		className: "ruby"
+		className: "ruby",
 	},
 	{
 		title: "AVIF images",
-		className: "avif"
+		className: "avif",
 	},
 	{
 		title: "WEBP images",
-		className: "webp"
+		className: "webp",
 	},
 ];
 
-const internalCss = tests.map(({className}) => `
+const internalCss = tests
+	.map(
+		({ className }) => `
 html.${className} .test-${className} .not-supported {
 	display: none;
 }
 html.no-${className} .test-${className} .supported {
 	display: none;
-}`).join("\n\n").trimStart()
+}`,
+	)
+	.join("\n\n")
+	.trimStart();
 ---
 
 <Layout title="Welcome to Astro.">

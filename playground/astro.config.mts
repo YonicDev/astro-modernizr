@@ -20,7 +20,7 @@ export default defineConfig({
 				"img/avif",
 				"img/webp",
 			],
-			options: [ "setClasses" ]
+			options: ["setClasses"],
 		}),
 		hmrIntegration({
 			directory: createResolver(import.meta.url).resolve("../package/dist"),
