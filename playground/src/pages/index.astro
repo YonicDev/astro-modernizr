@@ -4,8 +4,7 @@ import Layout from "../layouts/Layout.astro";
 
 import type { FeatureDetects } from "astro-modernizr";
 
-//TODO: keyof ModernizrObject is too broad. 
-const tests: {title: string, className: keyof FeatureDetects }[] = [
+const tests: {title: string, className: keyof FeatureDetects | "avif" }[] = [
 	{
 		title: "Ambient light",
 		className:"ambientlight",
@@ -36,12 +35,13 @@ const tests: {title: string, className: keyof FeatureDetects }[] = [
 	},
 ];
 
-const internalCss = tests.map(({className}) => `html.${className} .test-${className} .not-supported {
+const internalCss = tests.map(({className}) => `
+html.${className} .test-${className} .not-supported {
 	display: none;
 }
 html.no-${className} .test-${className} .supported {
 	display: none;
-}`).join("\n\n")
+}`).join("\n\n").trimStart()
 ---
 
 <Layout title="Welcome to Astro.">

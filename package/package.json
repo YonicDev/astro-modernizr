@@ -15,7 +15,7 @@
 		"astro",
 		"modernizr"
 	],
-	"homepage": "TODO:",
+	"homepage": "https://github.com/YonicDev/astro-modernizr",
 	"publishConfig": {
 		"access": "public"
 	},
