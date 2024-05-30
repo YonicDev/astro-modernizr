@@ -158,6 +158,33 @@ html.no-cssgrid .link-card-grid {
     display: none;
 }
 
+button {
+    appearance: none;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    font-size: 12pt;
+    font-family: inherit;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    &.disabled {
+        background-color: rgba(var(--accent), 25%);
+        color: rgba(var(--accent-light, 50%));
+    }
+    &.enabled {
+        background-color: rgba(var(--accent), 75%);
+        color: rgb(var(--accent-light));
+        &:is(:hover) {
+            background-color: rgba(var(--accent), 100%);
+        }
+        &:is(:active) {
+            transition: all 0.1s ease-out;
+            background-color: rgba(var(--accent-light), 95%);
+            color: rgb(var(--accent));
+        }
+    }
+}
+
 @supports (-webkit-text-fill-color: transparent) {
 	.text-gradient {
 		background: var(--accent-gradient, blueviolet);

@@ -3,9 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"browserslist": [
-		"IE >= 5.5, Firefox >= 1, supports flexbox"
-	],
+	"browserslist": ["IE >= 5.5, Firefox >= 1, supports flexbox"],
 	"scripts": {
 		"dev": "astro dev --host",
 		"start": "astro dev --host",
@@ -14,9 +12,11 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/svelte": "^5.4.0",
 		"astro": "^4.9.1",
 		"astro-integration-kit": "^0.13.3",
-		"astro-modernizr": "workspace:*"
+		"astro-modernizr": "workspace:*",
+		"svelte": "^4.2.17"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.7.0",

@@ -2,10 +2,10 @@ import type modernizr from "modernizr";
 import { integration } from "./integration.js";
 
 interface ModernizrAPI {
-	on(feature: string, cb: (result: boolean) => any): void;
+	on(feature: string, cb: (result: boolean) => void): void;
 
 	addTest(feature: string, test: (() => boolean) | boolean): ModernizrStatic;
-	addTest(feature: Dictionary<any>): ModernizrStatic;
+	addTest<T>(feature: Dictionary<T>): ModernizrStatic;
 
 	atRule(prop: string): boolean;
 
@@ -15,8 +15,8 @@ interface ModernizrAPI {
 
 	mq(mq: string): boolean;
 
-	prefixed(prop: string): string;
-	prefixed(prop: string, obj: EventTarget, element?: boolean): any;
+	prefixed(prop: string): string | false;
+	prefixed(prop: string, obj: EventTarget, element?: boolean): string | false;
 
 	prefixedCSS(prop: string): string;
 

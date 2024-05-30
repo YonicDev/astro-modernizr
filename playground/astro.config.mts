@@ -1,8 +1,9 @@
 import { createResolver } from "astro-integration-kit";
 import { hmrIntegration } from "astro-integration-kit/dev";
+import modernizr from "astro-modernizr";
 import { defineConfig } from "astro/config";
 
-import modernizr from "astro-modernizr";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +23,7 @@ export default defineConfig({
 			],
 			options: ["setClasses"],
 		}),
+		svelte(),
 		hmrIntegration({
 			directory: createResolver(import.meta.url).resolve("../package/dist"),
 		}),

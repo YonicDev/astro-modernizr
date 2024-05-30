@@ -4,6 +4,8 @@ import { z } from "astro/zod";
 import modernizr from "modernizr";
 import { featureDetects, options } from "./config-types.ts";
 
+import { fileURLToPath } from "node:url";
+
 export type Modernizr = ModernizrStatic;
 
 export const integration = defineIntegration({
@@ -30,9 +32,16 @@ export const integration = defineIntegration({
 
 		return {
 			hooks: {
-				"astro:config:setup": ({ injectScript }) => {
-					(context.options as any)["feature-detects"] =
-						context.options.featureDetects;
+				"astro:config:setup": ({ addClientDirective, injectScript }) => {
+					addClientDirective({
+						name: "features",
+						entrypoint: fileURLToPath(
+							new URL("./directives/features.js", import.meta.url),
+						),
+					});
+					(context.options as unknown as Record<string, string[]>)[
+						"feature-detects"
+					] = context.options.featureDetects;
 					context.options.minify ??= true;
 					(modernizr as unknown as ModernizrBuilder).build(
 						context.options,

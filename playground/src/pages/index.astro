@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+import Count from "../components/Count.svelte";
 import Table from "../components/Table.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -98,6 +99,12 @@ html.no-${className} .test-${className} .supported {
 			}
 		</ul>
 		<Table elements={tests.sort((a, b) => a.title.localeCompare(b.title))} />
+		<p class="instructions">
+			These buttons will be hydrated if <strong>all</strong> of the features listed are supported.<br/>
+			<Count label="ES6 Promises" client:features={["promises"]} />
+			<Count label="ES6 Promises & WEBP" client:features={["webp", "promises"]} />
+			<Count label="WEBP & Ambient light" client:features={["webp", "ambientlight"]} />
+		</p>
 	</main>
 </Layout>
 
