@@ -1,4 +1,4 @@
-import { defineIntegration } from "astro-integration-kit";
+import { addDts, defineIntegration } from "astro-integration-kit";
 import { z } from "astro/zod";
 
 import modernizr from "modernizr";
@@ -32,7 +32,8 @@ export const integration = defineIntegration({
 
 		return {
 			hooks: {
-				"astro:config:setup": ({ addClientDirective, injectScript }) => {
+				"astro:config:setup": (params) => {
+					const { addClientDirective, injectScript } = params;
 					addClientDirective({
 						name: "features",
 						entrypoint: fileURLToPath(
@@ -49,6 +50,14 @@ export const integration = defineIntegration({
 							injectScript("head-inline", result);
 						},
 					);
+					addDts(params, {
+						name: "astro-modernizr",
+						content: `import "astro"; declare module "astro" { interface AstroClientDirectives { "client:features"?: ${
+							(context.options.featureDetects ?? []).length > 0
+								? `${JSON.stringify(context.options.featureDetects)}[number]`
+								: "string"
+						} } }`,
+					});
 				},
 			},
 		};
