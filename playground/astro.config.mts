@@ -16,6 +16,7 @@ export default defineConfig({
 				"css/opacity",
 				"css/cssgrid",
 				"elem/ruby",
+				"css/fontdisplay",
 				"img/webp",
 				"es6/promises",
 				"es5/strictmode",

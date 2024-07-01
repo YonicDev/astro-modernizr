@@ -40,6 +40,12 @@ export const integration = defineIntegration({
 							new URL("./directives/features.js", import.meta.url),
 						),
 					});
+					addClientDirective({
+						name: "unsupported",
+						entrypoint: fileURLToPath(
+							new URL("./directives/unsupported.js", import.meta.url),
+						),
+					});
 					(context.options as unknown as Record<string, string[]>)[
 						"feature-detects"
 					] = context.options.featureDetects;
@@ -50,13 +56,13 @@ export const integration = defineIntegration({
 							injectScript("head-inline", result);
 						},
 					);
+					const parsedFeatureType = (context.options.featureDetects ?? []).length > 0
+					? `${JSON.stringify(context.options.featureDetects)}[number]`
+					: "string";
+
 					addDts(params, {
 						name: "astro-modernizr",
-						content: `import "astro"; declare module "astro" { interface AstroClientDirectives { "client:features"?: ${
-							(context.options.featureDetects ?? []).length > 0
-								? `${JSON.stringify(context.options.featureDetects)}[number]`
-								: "string"
-						} } }`,
+						content: `declare module "astro" { interface AstroClientDirectives { "client:features"?: ${parsedFeatureType}; "client:unsupported"?: ${parsedFeatureType} } }`,
 					});
 				},
 			},
