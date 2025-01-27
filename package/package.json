@@ -1,6 +1,6 @@
 {
 	"name": "astro-modernizr",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Add Modernizr feature detection to your Astro site.",
 	"author": {
 		"email": "mariomartinezpalacio@gmail.com",
