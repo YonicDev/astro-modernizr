@@ -21,8 +21,6 @@ export default ((load, options) => {
 
 		let testCase = false;
 
-		console.log(Modernizr);
-
 		for (const feature of directives) {
 			// biome-ignore lint/suspicious/noDoubleEquals: We need the value conversion from Boolean{subset} features to regular boolean.
 			testCase ||= Modernizr[feature] == false;

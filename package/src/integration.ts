@@ -1,4 +1,4 @@
-import { addDts, defineIntegration } from "astro-integration-kit";
+import { defineIntegration } from "astro-integration-kit";
 import { z } from "astro/zod";
 
 import modernizr from "modernizr";
@@ -56,15 +56,7 @@ export const integration = defineIntegration({
 							injectScript("head-inline", result);
 						},
 					);
-					const parsedFeatureType = (context.options.featureDetects ?? []).length > 0
-					? `${JSON.stringify(context.options.featureDetects)}[number]`
-					: "string";
-
-					addDts(params, {
-						name: "astro-modernizr",
-						content: `declare module "astro" { interface AstroClientDirectives { "client:features"?: ${parsedFeatureType}; "client:unsupported"?: ${parsedFeatureType} } }`,
-					});
-				},
+				}
 			},
 		};
 	},
