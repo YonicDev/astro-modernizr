@@ -56,6 +56,17 @@ export const integration = defineIntegration({
 							injectScript("head-inline", result);
 						},
 					);
+				},
+				"astro:config:done": (params) => {
+					const featureDetects = context.options.featureDetects ?? [];
+					const parsedFeatureType = (featureDetects ?? []).length > 0
+					?  `Array<${featureDetects.map((x) => `"${x}"`).join(" | ")}>` //`${JSON.stringify(context.options.featureDetects)}[number]`
+					: "string";
+
+					params.injectTypes({
+						filename: "types.d.ts",
+						content: `import "astro"; declare module "astro" { interface AstroClientDirectives { "client:features"?: ${parsedFeatureType}; "client:unsupported"?: ${parsedFeatureType} } }`,
+					})
 				}
 			},
 		};

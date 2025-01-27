@@ -1,9 +1,10 @@
 {
 	"extends": "astro/tsconfigs/strict",
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"],
 	"compilerOptions": {
 		"declaration": true,
 		"declarationDir": "./types",
 		"jsx": "preserve"
 	},
-	"exclude": ["dist"]
 }

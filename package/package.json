@@ -26,7 +26,9 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "tsup --watch",
 		"prebuild": "node prebuild.js",
@@ -34,12 +36,12 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"astro": "^4.9.1"
+		"astro": "^5.1.9"
 	},
 	"dependencies": {
-		"astro-integration-kit": "^0.13.3",
-		"modernizr": "^3.13.0",
 		"@types/modernizr": "^3.5.6",
+		"astro-integration-kit": "^0.18.0",
+		"modernizr": "^3.13.1",
 		"ts-transformer-keys": "^0.4.4"
 	},
 	"devDependencies": {

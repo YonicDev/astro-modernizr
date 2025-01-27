@@ -59,7 +59,7 @@ html.no-${className} .test-${className} .supported {
 	.trimStart();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Astro + Modernizr">
 	<main>
 		<svg
 			class="astro-a"
@@ -100,11 +100,11 @@ html.no-${className} .test-${className} .supported {
 		</ul>
 		<Table elements={tests.sort((a, b) => a.title.localeCompare(b.title))} />
 		<p class="instructions">
-			These buttons will be hydrated if <strong>all</strong> of the features listed are supported.<br/>
+			These buttons will be hydrated if <strong>all</strong> of the features listed are supported (or not if specified otherwise).<br/>
 			<Count label="ES6 Promises" client:features={["promises"]} />
 			<Count label="ES6 Promises & WEBP" client:features={["webp", "promises"]} />
 			<Count label="WEBP & Ambient light" client:features={["webp", "ambientlight"]} />
-			<Count label="Not Font Display" client:unsupported={["fontdisplay"]} />
+			<Count label="Not Ambient light" client:unsupported={["ambientlight"]} />
 		</p>
 	</main>
 </Layout>
