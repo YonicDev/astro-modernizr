@@ -63,7 +63,8 @@ export default defineConfig({
 
 ## Configuration
 
-The integration follows the same configuration as building Modernizr from the JS module to provide the smallest bundle as needed.
+This integration generates a custom optimized build of Modernizr from the NPM module, as per the recommendations of the most recent versions.
+The integration settings in the `astro.config` file control how this custom build is made.
 
 ### options
 
@@ -119,7 +120,7 @@ Enabled by default.
 
 You can use Modernizr just like you would normally. [Check the documentation][1] for more details.
 
-The integration exposes the `Modernizr` object globally on client scripts and offers typings to be used in optimized scripts. However, for backwards compatibility purposes it's heavily recommended to **use Modernizr only in inline scripts**.
+The integration exposes the `Modernizr` object globally on client scripts and offers typings to be used in optimized scripts. However, for older browser compatibility purposes it's recommended to **use Modernizr in inline scripts**.
 
 ```html
 <script is:inline>
@@ -129,6 +130,24 @@ The integration exposes the `Modernizr` object globally on client scripts and of
     // Get the old lame experience.
   }
 </script>
+```
+
+### Client directive
+
+This integration adds two directives which allow the browser to render components conditionally according to its feature set:
+
+*  `client:features`: Makes the browser render a component if the browser supports all of the features listed.
+*  `client:unsupported`: Makes the browser render a component if the browser does not support any of the features listed.
+
+Both have the highest priority, rendering at the same time as those with `client:load`.
+
+```jsx
+---
+import MyAwesomeComponent from "@components/Awesome.svelte"
+import SimpleAndLameComponent from "@components/SimpleLame.jsx"
+---
+<Awesome client:features={["awesomeNewFeature"]} />
+<SimpleAndLameComponent client:unsupported={["awesomeNewFeature"]} />
 ```
 
 ## Contributing
